@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Gabarito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Gabarito", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-bg: #030303;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-[12px] border border-white/[0.08];
+  }
+  
+  .glass-panel-light {
+    @apply bg-slate-900/[0.03] backdrop-blur-[12px] border border-slate-900/[0.08];
+  }
+  
+  .glow-emerald {
+    @apply shadow-[0_0_30px_-5px_var(--color-emerald-500)];
+  }
+  
+  .radial-bg {
+    background: radial-gradient(circle at top right, rgba(16,185,129,0.08), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(20,184,166,0.08), transparent 40%);
+  }
+  .radial-bg-light {
+    background: radial-gradient(circle at top right, rgba(16,185,129,0.05), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(20,184,166,0.05), transparent 40%);
+  }
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased selection:bg-emerald-500/30 selection:text-emerald-900;
+}
+
+.dark body {
+  @apply bg-brand-bg text-[#F1F5F9] selection:bg-emerald-500/30 selection:text-emerald-100;
+}
+
